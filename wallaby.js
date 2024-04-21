@@ -1,4 +1,4 @@
-export default function wallaby() {
+module.exports = function (wallaby) {
     return {
         files: [
             'src/**/*.tsx',    // Path to source files
@@ -12,4 +12,4 @@ export default function wallaby() {
         },
         testFramework: 'jest'  // Specify test framework
     };
-}
+};

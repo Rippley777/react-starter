@@ -1,12 +1,14 @@
 const TestComponent = () => {
     return (
-        <div className="p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
-            <div className="flex-shrink-0">{/* Icon or image */}</div>
-            <div>
-                <div className="text-xl font-medium text-black">header is  Works!</div>
-                <p className="text-gray-500">You're now using Tailwind CSS in React.</p>
-            </div>
-        </div>
+        <header className="w-full bg-white flex justify-between h-24 items-center p-5">
+            <div className="text-xl font-medium text-black">WTFFFF</div>
+            <nav>
+                <ul className="flex gap-x-3">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </nav>
+        </header>
     );
 };
 
