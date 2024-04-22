@@ -4,13 +4,27 @@ This is a react project was bootstrapped with [Create React App](https://github.
 
 ## Included Tech
 
-TypeScript, Tailwind CSS, MobX, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
+TypeScript, Tailwind CSS, Websockets, MobX, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
 
 ## Coming Soon!
 
-React Hook Form, Playwright, Storybook, & more :)
+REACT NATIVE!, React Hook Form, Playwright, Storybook, Simple user AUTH, 
 
-## How to Use
+## Current Pages
+
+- Static landing
+- Static About Me
+- Barebones Chat App using Websocket on same Express backend
+- Todo List integrated with Express/Mongo backend (currently hooked up to atlas, if you found this somehow please dont abuse it!!! (ya its open, cuz im nice, but getting your own is free!)) 
+
+## Pages To Be Added
+
+- Interactive informational node web
+- Some cool graphs! (it's been tooo long 😭)
+- Maybe a sample checkers(/chess if ambition hits 😅) 
+- Maybe the basis for a in-browser rpg that will spin off into it's own application (Dear Glitch creators aka Slack boys, i think you have money for server space now and i miss catching butterflies 🦋🥲)
+
+## How to Run
 In the project directory, you can run:
 
 ### `yarn start`
@@ -36,7 +50,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn run eject`
+### `yarn run eject` (applicable only to forked projects 😉)
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
