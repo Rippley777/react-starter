@@ -14,6 +14,7 @@ const TestComponent = () => {
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/todos">Todos</a></li>
+                    <li><a href="/chat">Chat</a></li>
                 </ul>
             </nav>
             <div className='sm:hidden w-16 h-16 flex justify-center items-center cursor-pointer' onClick={() => setShowMenu(true)}>
