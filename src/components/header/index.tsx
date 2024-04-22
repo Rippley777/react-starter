@@ -20,6 +20,9 @@ const TestComponent = () => {
             <div className='sm:hidden w-16 h-16 flex justify-center items-center cursor-pointer' onClick={() => setShowMenu(true)}>
                 <FaBarsStaggered />
             </div>
+            {showMenu && (
+                <div>test</div>
+            )}
         </header>
     );
 };

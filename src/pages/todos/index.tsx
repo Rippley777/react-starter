@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import TodoList from './components/todoList';
 import AddTodo from './components/addTodo';
 import Page from '../../components/layout/page';
-import Header from '../../components/header';
 
 function App() {
     const [todos, setTodos] = useState<any>([]);
