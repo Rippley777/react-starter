@@ -1,6 +1,6 @@
 import Page from "../../components/layout/page";
 
-const TestComponent = () => {
+const Home = () => {
     return (
         <Page>
             <div className="text-xl font-medium text-black">Tailwind Steeeeel Works!</div>
@@ -9,4 +9,4 @@ const TestComponent = () => {
     );
 };
 
-export default TestComponent;
+export default Home;

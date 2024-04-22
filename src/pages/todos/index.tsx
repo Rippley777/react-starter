@@ -3,7 +3,7 @@ import TodoList from './components/todoList';
 import AddTodo from './components/addTodo';
 import Page from '../../components/layout/page';
 
-function App() {
+function Todos() {
     const [todos, setTodos] = useState<any>([]);
 
     useEffect(() => {
@@ -42,4 +42,4 @@ function App() {
     );
 }
 
-export default App;
+export default Todos;

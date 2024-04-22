@@ -1,6 +1,6 @@
 import Page from "../components/layout/page";
 
-const TestComponent = () => {
+const About = () => {
     return (
         <Page>
             About me
@@ -8,4 +8,4 @@ const TestComponent = () => {
     );
 };
 
-export default TestComponent;
+export default About;
