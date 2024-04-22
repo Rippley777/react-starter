@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Home from './pages/home';
 import About from './pages/About';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import Todos from './pages/todos';
 
 const queryClient = new QueryClient();
 
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/about" element={<About />} />
+          <Route path="/todos" element={<Todos />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

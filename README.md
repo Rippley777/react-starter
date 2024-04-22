@@ -4,7 +4,7 @@ This is a react project was bootstrapped with [Create React App](https://github.
 
 ## Included Tech
 
-TypeScript, Tailwind CSS, MobX, React Router, React Query, ESLint, Prettier, Docker, NGINX
+TypeScript, Tailwind CSS, MobX, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
 
 ## Coming Soon!
 
