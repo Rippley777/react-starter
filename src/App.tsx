@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Home from './pages/home';
-import About from './pages/About';
+import About from './pages/about';
 import Todos from './pages/todos';
 import Chat from './pages/chat';
 
