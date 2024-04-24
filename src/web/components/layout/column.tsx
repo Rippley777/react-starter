@@ -1,10 +1,11 @@
-import Header from "../../components/header";
+import Header from "../header";
 
-type CompProps = {
+type ColumnProps = {
+    columns: any;
     children: React.ReactNode;
 };
 
-const TestComponent = ({ children }: CompProps) => {
+const Column = ({ children }: ColumnProps) => {
     return (
         <div className="h-full w-full bg-gray-200">
             <Header />
@@ -13,4 +14,4 @@ const TestComponent = ({ children }: CompProps) => {
     );
 };
 
-export default TestComponent;
+export default Column;

@@ -5,13 +5,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './auth/firebase-config';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import Home from './pages/home';
-import About from './pages/About';
-import Todos from './pages/todos';
-import Chat from './pages/chat';
-import Login from './pages/user/login';
-import SignUp from './pages/user/signup';
-import Profile from './pages/user/profile';
+import Home from './web/pages/home';
+import About from './web/pages/About';
+import Todos from './web/pages/todos';
+import Chat from './web/pages/chat';
+import Login from './web/pages/user/login';
+import SignUp from './web/pages/user/signup';
+import Profile from './web/pages/user/profile';
 
 const queryClient = new QueryClient();
 
