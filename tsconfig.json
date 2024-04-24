@@ -24,6 +24,7 @@
   },
   "include": [
     "src/**/*",
+    "node_modules/expo-router",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],

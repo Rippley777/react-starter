@@ -8,7 +8,10 @@ WORKDIR /app
 COPY yarn.lock ./
 
 # Install dependencies
-RUN yarn install
+RUN rm -rf node_modules
+RUN rm -rf yarn.lock
+RUN yarn cache clean
+RUN yarn install --force
 
 # Copy the rest of your application's code
 COPY . .
