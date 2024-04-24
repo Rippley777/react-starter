@@ -18,10 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": ["node_modules/@types", "typings"],
+    "types": ["node", "jest"],
   },
   "include": [
-    "src",
+    "src/**/*",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ],
