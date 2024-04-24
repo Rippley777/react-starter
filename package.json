@@ -83,6 +83,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@reduxjs/toolkit": "^2.2.3",
+    "@types/expo": "^33.0.1",
     "@types/react": "~18.2.45",
     "@types/react-native": "^0.73.0",
     "@types/react-router-dom": "^5.3.3",

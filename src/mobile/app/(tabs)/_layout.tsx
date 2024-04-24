@@ -1,7 +1,7 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
 import { Pressable } from 'react-native';
+import { AllRoutes, Link, Tabs } from 'expo-router';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import Colors from '../../constants/Colors';
 import { useColorScheme } from '../../components/useColorScheme';
@@ -30,10 +30,10 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
-            // @ts-expect-error: Alas, this was not expected.
-            <Link href="/modal" asChild>
+            // AllRoutes is a union of all possible routes in the app. I'm not sure why it's needed here.
+            <Link href={"/modal" as AllRoutes} asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
@@ -52,7 +52,7 @@ export default function TabLayout() {
         name="two"
         options={{
           title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color } : { color: string }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </Tabs>
