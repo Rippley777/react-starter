@@ -1,14 +1,16 @@
-# What's it got?
+# Under Construction! 🚧🚧🚧
 
-This is a react project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚨 Proceed with Caution 🚨
 
-## Included Tech
+Somehow you've landed on, what I think, is a pretty cool boilerplate for a web/mobile app built using React/React Native. This is very much in still a WIP, but is built with stability and industry best practices in mind. I hope to use this as a template for future projects, and I expect to have branches with experimental features, in order to keep main stable for the future. If you are an individual, please feel free to use this, but I maintain no responsibility for what may go wrong 🤣
 
-TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
+## What's it got?
+
+React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
 
 ## Coming Soon!
 
-REACT NATIVE!, React Hook Form, Playwright, Storybook, Dark Mode
+React Hook Form, Playwright, Storybook, Dark Mode, ...some cool graphing library 🤔
 
 ## Current Pages
 
@@ -22,7 +24,17 @@ REACT NATIVE!, React Hook Form, Playwright, Storybook, Dark Mode
 - Interactive informational node web
 - Some cool graphs! (it's been tooo long 😭)
 - Maybe a sample checkers(/chess if ambition hits 😅) 
-- Maybe the basis for a in-browser rpg that will spin off into it's own application (Dear Glitch creators aka Slack boys, i think you have money for server space now and i miss catching butterflies 🦋🥲)
+- Maybe the basis for a in-browser rpg that will spin off into it's own application (Dear Glitch creators aka Slack boys, i think you have money for server space now and i miss milking butterflies 🦋🥲)
+
+## Current Experimental Features
+
+- None 😭
+
+## Potential Future ExpFeat
+
+- Apple Vision Pro Mixed space 
+- React Strict DOM (Tailwind)
+An experimental feature from Meta enabling a standardization of components across different platforms, i.e. React, React Native, React VisionOS, React VR
 
 ## How to Run
 In the project directory, you can run:
