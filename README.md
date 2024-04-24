@@ -4,18 +4,18 @@ This is a react project was bootstrapped with [Create React App](https://github.
 
 ## Included Tech
 
-TypeScript, Tailwind CSS, Websockets, MobX, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
+TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX
 
 ## Coming Soon!
 
-REACT NATIVE!, React Hook Form, Playwright, Storybook, Simple user AUTH, 
+REACT NATIVE!, React Hook Form, Playwright, Storybook, Dark Mode
 
 ## Current Pages
 
 - Static landing
 - Static About Me
-- Barebones Chat App using Websocket on same Express backend
-- Todo List integrated with Express/Mongo backend (currently hooked up to atlas, if you found this somehow please dont abuse it!!! (ya its open, cuz im nice, but getting your own is free!)) 
+- Barebones Chat App using Websocket with Express/Mongo backend
+- Todo List integrated with same Express backend (currently hooked up to atlas, if you found this somehow please dont abuse it!!! (ya its open, cuz im nice, but getting your own is free!)) 
 
 ## Pages To Be Added
 
