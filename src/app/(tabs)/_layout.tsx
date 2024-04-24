@@ -3,9 +3,9 @@ import { Pressable } from 'react-native';
 import { Link, Tabs } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
-import Colors from '../../constants/Colors';
-import { useColorScheme } from '../../components/useColorScheme';
-import { useClientOnlyValue } from '../../components/useClientOnlyValue';
+import Colors from '@/mobile/constants/Colors';
+import { useColorScheme } from '@/mobile/components/useColorScheme';
+import { useClientOnlyValue } from '@/mobile/components/useClientOnlyValue';
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -25,18 +25,21 @@ export default function TabLayout() {
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
-      }}>
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="login"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="code" color={color} />,
+          title: 'Login',
+          tabBarIcon: ({ color }: { color: string }) => (
+            <TabBarIcon name="user" color={color} />
+          ),
           headerRight: () => (
-            <Link href={"/"} asChild>
+            <Link href={'/signup'} asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
+                    name="user-plus"
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
@@ -48,10 +51,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="chat"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color } : { color: string }) => <TabBarIcon name="code" color={color} />,
+          title: 'Chat',
+          tabBarIcon: ({ color }: { color: string }) => (
+            <TabBarIcon name="envelope-o" color={color} />
+          ),
         }}
       />
     </Tabs>
