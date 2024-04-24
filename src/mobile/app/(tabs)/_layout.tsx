@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable } from 'react-native';
-import { AllRoutes, Link, Tabs } from 'expo-router';
+import { Link, Tabs } from 'expo-router';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 import Colors from '../../constants/Colors';
@@ -32,8 +32,7 @@ export default function TabLayout() {
           title: 'Tab One',
           tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
-            // AllRoutes is a union of all possible routes in the app. I'm not sure why it's needed here.
-            <Link href={"/modal" as AllRoutes} asChild>
+            <Link href={"/"} asChild>
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome

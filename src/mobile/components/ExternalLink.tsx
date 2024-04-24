@@ -1,4 +1,4 @@
-import { Link, AllRoutes } from 'expo-router';
+import { Link } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { Platform } from 'react-native';
@@ -11,8 +11,8 @@ export function ExternalLink(
     <Link
       target="_blank"
       {...props}
-      // AllRoutes is a union of all possible routes in the app. I'm not sure why it's needed here.
-      href={props.href as AllRoutes}
+      //@ts-expect-error
+      href={props.href}
       onPress={(e) => {
         if (Platform.OS !== 'web') {
           // Prevent the default behavior of linking to the default browser on native.
