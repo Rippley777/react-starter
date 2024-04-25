@@ -1,55 +1,78 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useForm, Controller } from 'react-hook-form';
 import { signIn } from '../../../../auth/authService';
 import { setUserData } from '../../../../store/reducers/users';
 import Page from '../../../components/layout/page';
+import Input from '../../../components/form/input';
+import Button from '../../../components/buttons';
 
 const LoginForm = () => {
+  // const store = useContext(StoreContext);
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-    // const store = useContext(StoreContext);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const state = useSelector(state => state);
-    const dispatch = useDispatch();
+  //   const [email, setEmail] = useState('');
+  //   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
 
-    const handleSubmit = async (event: any) => {
-        event.preventDefault();
-        try {
-            const userCredential = await signIn(email, password);
-            console.log('submit', { state });
+  const onSubmit = async (values: { email: string; password: string }) => {
+    try {
+      const userCredential = await signIn(values.email, values.password);
+      //   dispatch(setUserData({ email: values.email }));
+      dispatch(setUserData({ email: values.email, ...userCredential }));
 
-            dispatch(setUserData({ email: email }));
+      window.location.href = '/profile';
+    } catch (error: any) {
+      setError(error.message);
+      console.error(error.message);
+    }
+  };
 
-            console.log(userCredential.user);
-            window.location.href = '/profile';
-            // Redirect or perform additional actions
-        } catch (error: any) {
-            setError(error.message);
-            console.error(error.message);
-        }
-    };
+  return (
+    <Page>
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-gray-400 text-sm">Login with Email</h1>
 
-    return (
-        <Page>
-            {error && <p>{error} <a href="/signup">click here to sign up</a></p>}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter email"
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
-                <button type="submit">Login</button>
-            </form>
-        </Page>
-    );
+        {error && (
+          <p>
+            {error} <a href="/signup">click here to sign up</a>
+          </p>
+        )}
+        <section className="w-48">
+          <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              name="email"
+              control={control}
+              rules={{ required: 'First name is required' }}
+              render={({ field }) => <Input {...field} placeholder="Email" />}
+            />
+            {errors.email && <span>{errors.email.message}</span>}
+            <Controller
+              name="password"
+              control={control}
+              rules={{ required: 'Password is required' }}
+              render={({ field }) => (
+                <Input {...field} placeholder="Password" />
+              )}
+            />
+            {errors.password && <span>{errors.password.message}</span>}
+            <Button type="submit">Login</Button>
+          </form>
+        </section>
+      </div>
+    </Page>
+  );
 };
 
 export default LoginForm;
