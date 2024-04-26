@@ -1,12 +1,11 @@
-import Page from "../../components/layout/page";
-
+import Page from '../../components/layout/page';
+import Hero from './components/hero';
 const Home = () => {
-    return (
-        <Page>
-            <div className="text-xl font-medium text-black">Tailwind Steeeeel Works!</div>
-            <p className="text-gray-500">You're now using Tailwind CSS in React.</p>
-        </Page>
-    );
+  return (
+    <Page noPadding>
+      <Hero />
+    </Page>
+  );
 };
 
 export default Home;

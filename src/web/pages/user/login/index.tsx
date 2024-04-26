@@ -1,56 +1,31 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useForm, Controller } from 'react-hook-form';
-import { signIn } from '../../../../auth/authService';
-import { setUserData } from '../../../../store/reducers/users';
+import { SiFirebase } from 'react-icons/si';
 import Page from '../../../components/layout/page';
-import Input from '../../../components/form/input';
-import Button from '../../../components/buttons';
+import LoginForm from '../../../components/login';
 
-const LoginForm = () => {
-  // const store = useContext(StoreContext);
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
-
-  //   const [email, setEmail] = useState('');
-  //   const [password, setPassword] = useState('');
+const LoginPage = () => {
   const [error, setError] = useState('');
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-
-  const onSubmit = async (values: { email: string; password: string }) => {
-    try {
-      const userCredential = await signIn(values.email, values.password);
-      //   dispatch(setUserData({ email: values.email }));
-      dispatch(setUserData({ email: values.email, ...userCredential }));
-
-      window.location.href = '/profile';
-    } catch (error: any) {
-      setError(error.message);
-      console.error(error.message);
-    }
-  };
 
   return (
     <Page>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-gray-400 text-sm">Login with Email</h1>
+        <span className="font-xl">
+          Have you ever wanted to login with firebase{' '}
+          <SiFirebase className="inline text-yellow-400 drop-shadow-[0_1.3px_1.3px_rgba(0,0,0,0.9)]" />{' '}
+          authentication? Well now you can!
+        </span>
 
         {error && (
           <p>
-            {error} <a href="/signup">click here to sign up</a>
+            {error}{' '}
+            <a className="text-grey-700" href="/signup">
+              Click here to sign up
+            </a>
           </p>
         )}
-        <section className="w-48">
-          <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+        <section className="w-48 pt-20 flex flex-col items-center">
+          <h1 className="text-gray-500 font-thin py-3">Login with Email</h1>
+          {/* <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
             <Controller
               name="email"
               control={control}
@@ -68,11 +43,12 @@ const LoginForm = () => {
             />
             {errors.password && <span>{errors.password.message}</span>}
             <Button type="submit">Login</Button>
-          </form>
+          </form> */}
+          <LoginForm setError={setError} />
         </section>
       </div>
     </Page>
   );
 };
 
-export default LoginForm;
+export default LoginPage;

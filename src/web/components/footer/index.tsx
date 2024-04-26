@@ -37,14 +37,16 @@ const Footer: React.FC<FooterProps> = (props) => {
   ];
   return (
     <footer className="bg-gray-800 text-white text-center p-5">
-      <div className="flex justify-between">
-        <div className="flex flex-col">
+      <div className="flex flex-col gap-5 sm:flex-row">
+        <div className="flex flex-row gap-x-3 justify-center sm:flex-col">
           <span>&copy; {new Date().getFullYear()}</span>
           <span>Built on:</span>
         </div>
-        {icons.map((icon) => (
-          <FooterIcon key={icon.name} icon={icon.icon} name={icon.name} />
-        ))}
+        <div className="flex flex-1 justify-between">
+          {icons.map((icon) => (
+            <FooterIcon key={icon.name} icon={icon.icon} name={icon.name} />
+          ))}
+        </div>
       </div>
     </footer>
   );
