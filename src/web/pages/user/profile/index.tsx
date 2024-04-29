@@ -11,7 +11,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
-  const { email, name = '' } = state;
+  const { email = '', name = '' } = state;
   const {
     control,
     handleSubmit,
@@ -50,13 +50,25 @@ const UserProfile = () => {
             name="email"
             control={control}
             rules={{ required: 'Email is required' }}
-            render={({ field }) => <Input {...field} placeholder="Email" />}
+            render={({ field }) => (
+              <input
+                className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none"
+                placeholder="Email"
+                {...field}
+              />
+            )}
           />
           {errors.email && <span>{errors.email.message?.toString()}</span>}
           <Controller
             name="name"
             control={control}
-            render={({ field }) => <Input {...field} placeholder="Name" />}
+            render={({ field }) => (
+              <input
+                className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none"
+                placeholder="Name"
+                {...field}
+              />
+            )}
           />
           {errors.name && <span>{errors.name.message?.toString()}</span>}
           <Button type="submit">Update</Button>

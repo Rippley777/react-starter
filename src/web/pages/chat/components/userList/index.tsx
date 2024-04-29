@@ -19,7 +19,7 @@ const UserList: React.FC<UserListProps> = ({ messages }) => {
       }
     }
   }, [messages]);
-  console.log({ userList, messages });
+  //   console.log({ userList, messages });
 
   const getUserTag = (user: any) => {
     const username = user;
@@ -32,8 +32,8 @@ const UserList: React.FC<UserListProps> = ({ messages }) => {
   };
   return (
     <div>
-      {userList.map((user) => (
-        <div>{getUserTag(user?.[1])}</div>
+      {userList.map((user, index) => (
+        <div key={index}>{getUserTag(user?.[1])}</div>
       ))}
     </div>
   );

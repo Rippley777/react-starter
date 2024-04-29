@@ -9,7 +9,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUserData: (state, action) => {
-      console.log('action.payload', action.payload);
+      //   console.log('action.payload', action.payload);
 
       const userData = {
         email: action.payload.email,
@@ -17,7 +17,7 @@ const userSlice = createSlice({
       state.userData = userData;
     },
     setUserProfileData: (state, action) => {
-      console.log('action.payload', action.payload);
+      //   console.log('action.payload', action.payload);
       const payload = omit(action.payload, 'email');
       const userProfileData = {
         ...state.userData,
