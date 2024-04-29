@@ -7,8 +7,9 @@ import Button from '../../components/buttons';
 
 type LoginFormProps = {
   setError: (error: string) => void;
+  redirectToProfile?: boolean;
 };
-const LoginForm = ({ setError }: LoginFormProps) => {
+const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
   // const store = useContext(StoreContext);
   const {
     control,
@@ -25,7 +26,7 @@ const LoginForm = ({ setError }: LoginFormProps) => {
     try {
       const userCredential = await signIn(values.email, values.password);
       dispatch(setUserData({ email: values.email, ...userCredential }));
-      window.location.href = '/profile';
+      if (redirectToProfile) window.location.href = '/profile';
     } catch (error: any) {
       setError(error.message);
       console.error(error.message);

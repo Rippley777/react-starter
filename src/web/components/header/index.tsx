@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import logo from './images/logo.png';
 import LoginForm from '../login';
@@ -22,6 +23,8 @@ const Menu = () => {
   );
 };
 const TestComponent = () => {
+  const state = useSelector((state: any) => state.user.userData);
+
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   return (
@@ -39,13 +42,18 @@ const TestComponent = () => {
         <ul className="flex gap-x-3">
           <Menu />
           <li>
-            {/* <a href="/login">Login</a> */}
-            <div
-              className="cursor-pointer"
-              onClick={() => setShowLogin((prev) => !prev)}
-            >
-              Login
-            </div>
+            {state.email ? (
+              <a className="cursor-pointer" href="/profile">
+                Profile
+              </a>
+            ) : (
+              <div
+                className="cursor-pointer"
+                onClick={() => setShowLogin((prev) => !prev)}
+              >
+                Login
+              </div>
+            )}
           </li>
         </ul>
       </nav>
@@ -64,7 +72,11 @@ const TestComponent = () => {
             <ul className="flex flex-col gap-y-7">
               <Menu />
               <li>
-                <a href="/login">Login</a>
+                {state.email ? (
+                  <a href="/profile">Profile</a>
+                ) : (
+                  <a href="/login">Login</a>
+                )}
               </li>
             </ul>
           </div>

@@ -1,23 +1,74 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm, Controller } from 'react-hook-form';
 import Page from '../../../components/layout/page';
+import Input from '../../../components/form/input';
+import Button from '../../../components/buttons';
+import { setUserProfileData } from '../../../../store/reducers/users';
 
 const UserProfile = () => {
-    const state = useSelector((state: any) => state.user.userData);
-    console.log({ state });
+  const state = useSelector((state: any) => state.user.userData);
+  const dispatch = useDispatch();
+  const [loaded, setLoaded] = useState(false);
 
+  const { email, name = '' } = state;
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
+      email,
+      name,
+    },
+  });
 
-    return (
-        <Page>
-            <h1>User Profile</h1>
-            {state.email ? (
-                <div>
-                    <p>Email: {state.email}</p>
-                </div>
-            ) : (
-                <p>No user data</p>
-            )}
-        </Page>
-    );
+  useEffect(() => {
+    if (!loaded && state.email) {
+      reset(state);
+      setLoaded(true);
+    }
+  }, [state, reset, setLoaded, loaded]);
+
+  const onSubmit = async (values: { email: string; name: string }) => {
+    try {
+      dispatch(setUserProfileData({ ...values }));
+      window.location.href = '/profile';
+    } catch (error: any) {
+      //   setError(error.message);
+      console.error(error.message);
+    }
+  };
+
+  return (
+    <Page>
+      <h1>User Profile</h1>
+      {state.email ? (
+        <form className="flex flex-col w-72" onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="email"
+            control={control}
+            rules={{ required: 'Email is required' }}
+            render={({ field }) => <Input {...field} placeholder="Email" />}
+          />
+          {errors.email && <span>{errors.email.message?.toString()}</span>}
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => <Input {...field} placeholder="Name" />}
+          />
+          {errors.name && <span>{errors.name.message?.toString()}</span>}
+          <Button type="submit">Update</Button>
+        </form>
+      ) : (
+        <p>
+          Error! It appears you are not correctly logged in, ya dang hacker! Get
+          back to the <a href="/login">Login Page!</a>
+        </p>
+      )}
+    </Page>
+  );
 };
 
 export default UserProfile;

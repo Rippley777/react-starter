@@ -25,26 +25,7 @@ const LoginPage = () => {
         )}
         <section className="w-48 pt-20 flex flex-col items-center">
           <h1 className="text-gray-500 font-thin py-3">Login with Email</h1>
-          {/* <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              name="email"
-              control={control}
-              rules={{ required: 'First name is required' }}
-              render={({ field }) => <Input {...field} placeholder="Email" />}
-            />
-            {errors.email && <span>{errors.email.message}</span>}
-            <Controller
-              name="password"
-              control={control}
-              rules={{ required: 'Password is required' }}
-              render={({ field }) => (
-                <Input {...field} placeholder="Password" />
-              )}
-            />
-            {errors.password && <span>{errors.password.message}</span>}
-            <Button type="submit">Login</Button>
-          </form> */}
-          <LoginForm setError={setError} />
+          <LoginForm setError={setError} redirectToProfile />
         </section>
       </div>
     </Page>

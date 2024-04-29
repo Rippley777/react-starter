@@ -1,26 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { SiAzuredevops, SiExpress, SiMongodb } from 'react-icons/si';
 
 import Page from '../../components/layout/page';
 import Button from '../../components/buttons';
 import useWebSocket from '../../../hooks/useWebSocket';
-
-import { SiAzuredevops, SiExpress, SiMongodb } from 'react-icons/si';
+import UserList from './components/userList';
+import DevToolsCustomWs from '../../components/dev/customWs';
 
 function Chat() {
   const state = useSelector((state: any) => state.user.userData);
   const [input, setInput] = useState('');
+  const [username, setUsername] = useState('anonymous');
+  const [showDevTools, setShowDevTools] = useState(false);
   const { messages, sendMessage, status } = useWebSocket(
     'wss://be-test-mongo-express.azurewebsites.net',
   );
-  const username = state.email ?? 'anonymous';
+
+  // console.log({ state });
+
+  useEffect(() => {
+    if (username === 'anonymous' && state.email) {
+      setUsername(state.name || state.email.split('@')[0]);
+    }
+  }, [state, username, sendMessage]);
+
+  useEffect(() => {
+    // console.log({ username });
+
+    sendMessage({ type: 'set-username', username });
+  }, [username, sendMessage]);
 
   const handleSend = () => {
     if (input) {
-      sendMessage(`${username}: ${input}`);
+      sendMessage({ type: 'chat-message-send', username, content: input });
       setInput('');
     }
   };
+  // console.log({ messages });
 
   return (
     <Page>
@@ -35,14 +52,19 @@ function Chat() {
           </div>
         </div>
         <div className="w-full h-full flex flex-col">
-          <div className="bg-white p-5 flex-1">
-            <h1>Status: {status}</h1>
-            <h2>User: {username}</h2>
-            {messages
-              .filter((m, i) => m !== messages[i - 1])
-              .map((message: any, index: any) => (
-                <div key={index}>{message}</div>
-              ))}
+          <div className="flex gap-x-3 h-full">
+            <div className="bg-white p-5 flex-1">
+              <h1>Status: {status}</h1>
+              <h2>User: {username}</h2>
+              {messages
+                .filter((m: any) => JSON.parse(m).type === 'chat-message')
+                .map((message: any, index: any) => (
+                  <div key={index}>{JSON.parse(message).message}</div>
+                ))}
+            </div>
+            <div className="flex-[.3]">
+              <UserList messages={messages} />
+            </div>
           </div>
           <div className="flex justify-between items-center p-5">
             <input
@@ -55,7 +77,15 @@ function Chat() {
             <Button onClick={handleSend}>Send</Button>
           </div>
         </div>
+        <Button onClick={() => setShowDevTools((prev) => !prev)}>
+          Show Dev Tools
+        </Button>
       </div>
+      {showDevTools && (
+        <div>
+          <DevToolsCustomWs />
+        </div>
+      )}
     </Page>
   );
 }

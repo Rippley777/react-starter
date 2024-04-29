@@ -14,7 +14,7 @@ export default function Chat() {
   const username = state.email ?? 'anonymous';
   const handleSend = () => {
     if (input) {
-      sendMessage(`${username}: ${input}`);
+      sendMessage({ type: 'chat-message', username, content: input });
       setInput('');
     }
   };
@@ -22,9 +22,11 @@ export default function Chat() {
     <View>
       <Text>User: {username}</Text>
       <Text>Status: {status}</Text>
-      {messages.map((message, index) => (
-        <Text key={index}>{message}</Text>
-      ))}
+      {messages
+        .filter((message) => message.type === 'chat-message')
+        .map((message, index) => (
+          <Text key={index}>{message.message}</Text>
+        ))}
       <TextInput
         style={styles.input}
         value={input}
