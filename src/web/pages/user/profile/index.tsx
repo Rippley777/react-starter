@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import Page from '../../../components/layout/page';
-import Input from '../../../components/form/input';
 import Button from '../../../components/buttons';
 import { setUserProfileData } from '../../../../store/reducers/users';
 
