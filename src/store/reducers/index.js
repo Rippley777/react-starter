@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import userData from './users';
-
+import details from './users';
+import chatData from './chat';
 
 const rootReducer = combineReducers({
-    user: userData
+  user: details,
+  chat: chatData,
 });
 
 export default rootReducer;
