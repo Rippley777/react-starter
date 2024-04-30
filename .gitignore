@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 *storybook.log
+
+expo-env.d.ts
