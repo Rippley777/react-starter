@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaBarsStaggered } from 'react-icons/fa6';
+import { getAuth } from 'firebase/auth';
+
+import { clearUser } from '../../../store/reducers/users';
 import logo from './images/logo.png';
 import LoginForm from '../login';
 
@@ -22,11 +25,21 @@ const Menu = () => {
     </>
   );
 };
-const TestComponent = () => {
+const Header = () => {
   const state = useSelector((state: any) => state.user.userData);
+  const dispatch = useDispatch();
 
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+
+  const handleLogout = () => {
+    getAuth()
+      .signOut()
+      .then(() => {
+        dispatch(clearUser());
+      });
+  };
+
   return (
     <header className="w-full bg-white flex justify-between h-24 items-center p-5">
       <div
@@ -45,20 +58,28 @@ const TestComponent = () => {
       <nav className="hidden sm:block">
         <ul className="flex gap-x-3">
           <Menu />
-          <li>
-            {state.email ? (
-              <a className="cursor-pointer" href="/profile">
-                Profile
-              </a>
-            ) : (
+
+          {state?.email ? (
+            <>
+              <li>
+                <a className="cursor-pointer" href="/profile">
+                  Profile
+                </a>
+              </li>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <li>
               <div
                 className="cursor-pointer"
                 onClick={() => setShowLogin((prev) => !prev)}
               >
                 Login
               </div>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
       <div
@@ -76,7 +97,7 @@ const TestComponent = () => {
             <ul className="flex flex-col gap-y-7">
               <Menu />
               <li>
-                {state.email ? (
+                {state?.email ? (
                   <a href="/profile">Profile</a>
                 ) : (
                   <a href="/login">Login</a>
@@ -95,4 +116,4 @@ const TestComponent = () => {
   );
 };
 
-export default TestComponent;
+export default Header;

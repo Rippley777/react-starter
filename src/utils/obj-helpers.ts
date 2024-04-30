@@ -20,7 +20,13 @@
  * // }
  */
 
-export const omit = (obj, keysToOmit) =>
-  Object.fromEntries(
-    Object.entries(obj).filter(([key]) => !keysToOmit.includes(key)),
-  );
+export function omit<T extends object, K extends keyof T>(
+  obj: T,
+  ...keys: K[]
+): Omit<T, K> {
+  const ret: Partial<T> = { ...obj };
+  keys.forEach((key) => {
+    delete ret[key];
+  });
+  return ret as Omit<T, K>;
+}

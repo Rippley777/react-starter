@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
+
+import { RootState } from '../../../../store/store';
 import Page from '../../../components/layout/page';
 import Button from '../../../components/buttons';
 import { setUserProfileData } from '../../../../store/reducers/users';
 
 const UserProfile = () => {
-  const state = useSelector((state: any) => state.user.userData);
+  const { userData = {} } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
 
-  const { email = '', name = '' } = state;
   const {
     control,
     handleSubmit,
@@ -18,22 +19,22 @@ const UserProfile = () => {
     reset,
   } = useForm({
     defaultValues: {
-      email,
-      name,
+      email: userData?.email ?? '',
+      username: userData?.username ?? '',
     },
   });
 
   useEffect(() => {
-    if (!loaded && state.email) {
-      reset(state);
+    if (!loaded && userData?.email) {
+      reset(userData);
       setLoaded(true);
     }
-  }, [state, reset, setLoaded, loaded]);
+  }, [userData, reset, setLoaded, loaded]);
 
-  const onSubmit = async (values: { email: string; name: string }) => {
+  const onSubmit = async (values: { email: string; username: string }) => {
     try {
       dispatch(setUserProfileData({ ...values }));
-      window.location.href = '/profile';
+      //   window.location.href = '/profile';
     } catch (error: any) {
       //   setError(error.message);
       console.error(error.message);
@@ -43,7 +44,7 @@ const UserProfile = () => {
   return (
     <Page>
       <h1>User Profile</h1>
-      {state.email ? (
+      {userData?.email ? (
         <form className="flex flex-col w-72" onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="email"
@@ -59,17 +60,19 @@ const UserProfile = () => {
           />
           {errors.email && <span>{errors.email.message?.toString()}</span>}
           <Controller
-            name="name"
+            name="username"
             control={control}
             render={({ field }) => (
               <input
                 className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none"
-                placeholder="Name"
+                placeholder="Username"
                 {...field}
               />
             )}
           />
-          {errors.name && <span>{errors.name.message?.toString()}</span>}
+          {errors.username && (
+            <span>{errors.username.message?.toString()}</span>
+          )}
           <Button type="submit">Update</Button>
         </form>
       ) : (

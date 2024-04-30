@@ -1,116 +1,49 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { SiAzuredevops, SiExpress, SiMongodb } from 'react-icons/si';
-import { setUserChatData } from '../../../store/reducers/chat';
-import useWebSocket, { Message } from '../../../hooks/useWebSocket';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../../../store/store';
+import useWebSocket from '../../../hooks/useWebSocket';
 import Page from '../../components/layout/page';
-import Button from '../../components/buttons';
-import DevToolsCustomWs from '../../components/dev/customWs';
+import Header from './components/header';
+import Body from './components/body';
+import Footer from './components/footer';
+import Input from './components/input';
 import UserList from './components/userList';
 
-function Chat() {
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state.user.userData);
-  const chatState = useSelector((state: any) => state.chat);
-  const [input, setInput] = useState('');
-  const [username, setUsername] = useState('anonymous');
-  const [showDevTools, setShowDevTools] = useState(false);
-  const { messages, sendMessage, status } = useWebSocket(
+// import DevToolsCustomWs from './DevToolsCustomWs';
+
+function ChatPage() {
+  const userState = useSelector((state: RootState) => state.user.userData);
+  const { sendMessage, status } = useWebSocket(
     process.env.REACT_APP_WEBSOCKET_URL ??
       'wss://be-test-mongo-express.azurewebsites.net',
   );
 
-  const [isConnected, setIsConnected] = useState(false);
-
   useEffect(() => {
-    if (username === 'anonymous' && state.email) {
-      setUsername(state.name || state.email.split('@')[0]);
-    }
-  }, [state, username, sendMessage]);
-
-  useEffect(() => {
-    if (!isConnected) {
-      const connectedMessage: Message | undefined = messages.find(
-        (m: any) => JSON.parse(m).type === 'user-connected',
-      );
-      if (connectedMessage) {
-        const message = JSON.parse(connectedMessage as any);
-        // if (username !== 'anonymous') {
-        sendMessage({
-          type: 'set-username',
-          id: message.userId,
-          username:
-            username === 'anonymous' ? `Anon_${message.userId}` : username,
-        });
-        // }
-        dispatch(setUserChatData(message));
-        setIsConnected(true);
-      }
-    }
-  }, [status, messages, dispatch, sendMessage, isConnected, username]);
-
-  const handleSend = () => {
-    if (input) {
+    if (status === 'connected') {
       sendMessage({
-        type: 'chat-message-send',
-        id: chatState.chatId,
-        username,
-        content: input,
+        type: 'set-username',
+        username: userState?.username ?? userState?.email ?? 'anonymous',
       });
-      setInput('');
     }
-  };
-  // console.log({ messages });
+  }, [sendMessage, status, userState]);
 
   return (
     <Page>
-      <div className="flex flex-col items-center justify-center h-full">
-        <div className="pb-10 text-center">
-          <div>Welcome to Chat!</div>
-          <div>
-            This page is powered by websockets over a Mongo{' '}
-            <SiMongodb className="inline text-green-400" /> Express{' '}
-            <SiExpress className="inline text-blue-700" /> backend hosted on
-            Azure <SiAzuredevops className="inline text-blue-400" />
-          </div>
-        </div>
+      <div className="flex flex-col h-full">
+        <Header status={status} />
         <div className="w-full h-full flex flex-col">
           <div className="flex gap-x-3 h-full">
-            <div className="bg-white p-5 flex-1">
-              <h1>Status: {status}</h1>
-              <h2>User: {username}</h2>
-              {messages
-                .filter((m: any) => JSON.parse(m).type === 'chat-message')
-                .map((message: any, index: any) => (
-                  <div key={index}>{JSON.parse(message).message}</div>
-                ))}
-            </div>
-            <div className="flex-[.3]">
-              <UserList messages={messages} />
-            </div>
+            <Body />
+            <UserList />
           </div>
-          <div className="flex justify-between items-center p-5">
-            <input
-              className="p-3 rounded-md flex-1 h-12"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-              placeholder="Enter message"
-            />
-            <Button onClick={handleSend}>Send</Button>
-          </div>
+          <Input sendMessage={sendMessage} />
         </div>
-        <Button onClick={() => setShowDevTools((prev) => !prev)}>
-          Show Dev Tools
-        </Button>
+        <Footer />
+        {/* <DevToolsCustomWs /> */}
       </div>
-      {showDevTools && (
-        <div>
-          <DevToolsCustomWs />
-        </div>
-      )}
     </Page>
   );
 }
 
-export default Chat;
+export default ChatPage;
