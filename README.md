@@ -6,24 +6,24 @@ Somehow you've landed on, what I think, is a pretty cool boilerplate for a web/m
 
 ## What's it got?
 
-React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
+React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
 
 ## Coming Soon!
 
-React Hook Form, Playwright, Storybook, Dark Mode, ...some cool graphing library 🤔
+React Table, Playwright, Storybook, Dark Mode, Feature Flags, Charting library (D3 or Plotly 🤔)
 
 ## Current Pages
 
 - Static landing
 - Static About Me
 - Barebones Chat App using Websocket with Express/Mongo backend
-- Todo List integrated with same Express backend (currently hooked up to atlas, if you found this somehow please dont abuse it!!! (ya its open, cuz im nice, but getting your own is free!)) 
+- Todo List integrated with same Express backend (currently hooked up to atlas, if you found this somehow please dont abuse it!!! (ya its open, cuz im nice, but getting your own is free!))
 
 ## Pages To Be Added
 
 - Interactive informational node web
 - Some cool graphs! (it's been tooo long 😭)
-- Maybe a sample checkers(/chess if ambition hits 😅) 
+- Maybe a sample checkers(/chess if ambition hits 😅)
 - Maybe the basis for a in-browser rpg that will spin off into it's own application (Dear Glitch creators aka Slack boys, i think you have money for server space now and i miss milking butterflies 🦋🥲)
 
 ## Current Experimental Features
@@ -32,19 +32,20 @@ React Hook Form, Playwright, Storybook, Dark Mode, ...some cool graphing library
 
 ## Potential Future ExpFeat
 
-- Apple Vision Pro Mixed space 
+- Apple Vision Pro Mixed space
 - React Strict DOM (Tailwind)
-An experimental feature from Meta enabling a standardization of components across different platforms, i.e. React, React Native, React VisionOS, React VR
+  An experimental feature from Meta enabling a standardization of components across different platforms, i.e. React, React Native, React VisionOS, React VR
 
 # How to Run
+
 This application was bootstrapped from Create React App. If having any issues, or unsure about anything in this section, that will likely be a great resource.
 
 ## Web:
+
 ### `yarn start`
 
 Runs the app in the development mode. (Hot Module enabled 🔥)\
 [By Default] Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 
 ### `yarn run build`
 
@@ -54,6 +55,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 This is currently being used by Docker and set up for hosting on Azure.
 
 ## Mobile:
+
 ### `yarn run mobile`
 
 Runs the app in expo. This provides a QR code for viewing on actual devices, or hotkeys for opening various simulators/environments.

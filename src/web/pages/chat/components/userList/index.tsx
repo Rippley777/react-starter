@@ -21,19 +21,10 @@ const UserList: React.FC<UserListProps> = ({ messages }) => {
   }, [messages]);
   //   console.log({ userList, messages });
 
-  const getUserTag = (user: any) => {
-    const username = user;
-
-    if (username.substring(0, 4) === 'User') {
-      return username.slice(0, 9).replace('User', 'Anon_');
-    }
-
-    return username;
-  };
   return (
     <div>
       {userList.map((user, index) => (
-        <div key={index}>{getUserTag(user?.[1])}</div>
+        <div key={index}>{user[1]}</div>
       ))}
     </div>
   );

@@ -4,7 +4,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './auth/firebase-config';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './store/store';
 import Home from './web/pages/home';
 import About from './web/pages/About';
 import Todos from './web/pages/todos';
@@ -19,9 +20,9 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // console.log("Logged in:", user);
+        console.log('Logged in:', user);
       } else {
-        // console.log("No user logged in");
+        console.log('No user logged in');
       }
     });
 
@@ -31,19 +32,21 @@ function App() {
 
   return (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <Routes>
-            <Route path="/about" element={<About />} />
-            <Route path="/todos" element={<Todos />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </Router>
-      </QueryClientProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Routes>
+              <Route path="/about" element={<About />} />
+              <Route path="/todos" element={<Todos />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Router>
+        </QueryClientProvider>
+      </PersistGate>
     </Provider>
   );
 }

@@ -29,7 +29,10 @@ const TestComponent = () => {
   const [showLogin, setShowLogin] = useState(false);
   return (
     <header className="w-full bg-white flex justify-between h-24 items-center p-5">
-      <div className="text-xl font-medium text-black">
+      <div
+        className="text-xl font-medium text-black flex items-center gap-x-3 cursor-pointer"
+        onClick={() => (window.location.href = '/')}
+      >
         <img
           src={logo}
           className="App-logo"
@@ -37,6 +40,7 @@ const TestComponent = () => {
           height={70}
           width={70}
         />
+        The Testing Ground
       </div>
       <nav className="hidden sm:block">
         <ul className="flex gap-x-3">

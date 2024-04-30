@@ -1,23 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { SiAzuredevops, SiExpress, SiMongodb } from 'react-icons/si';
-
+import { setUserChatData } from '../../../store/reducers/chat';
+import useWebSocket, { Message } from '../../../hooks/useWebSocket';
 import Page from '../../components/layout/page';
 import Button from '../../components/buttons';
-import useWebSocket from '../../../hooks/useWebSocket';
-import UserList from './components/userList';
 import DevToolsCustomWs from '../../components/dev/customWs';
+import UserList from './components/userList';
 
 function Chat() {
+  const dispatch = useDispatch();
   const state = useSelector((state: any) => state.user.userData);
+  const chatState = useSelector((state: any) => state.chat);
   const [input, setInput] = useState('');
   const [username, setUsername] = useState('anonymous');
   const [showDevTools, setShowDevTools] = useState(false);
   const { messages, sendMessage, status } = useWebSocket(
-    'wss://be-test-mongo-express.azurewebsites.net',
+    process.env.REACT_APP_WEBSOCKET_URL ??
+      'wss://be-test-mongo-express.azurewebsites.net',
   );
 
-  // console.log({ state });
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     if (username === 'anonymous' && state.email) {
@@ -26,14 +29,34 @@ function Chat() {
   }, [state, username, sendMessage]);
 
   useEffect(() => {
-    // console.log({ username });
-
-    sendMessage({ type: 'set-username', username });
-  }, [username, sendMessage]);
+    if (!isConnected) {
+      const connectedMessage: Message | undefined = messages.find(
+        (m: any) => JSON.parse(m).type === 'user-connected',
+      );
+      if (connectedMessage) {
+        const message = JSON.parse(connectedMessage as any);
+        // if (username !== 'anonymous') {
+        sendMessage({
+          type: 'set-username',
+          id: message.userId,
+          username:
+            username === 'anonymous' ? `Anon_${message.userId}` : username,
+        });
+        // }
+        dispatch(setUserChatData(message));
+        setIsConnected(true);
+      }
+    }
+  }, [status, messages]);
 
   const handleSend = () => {
     if (input) {
-      sendMessage({ type: 'chat-message-send', username, content: input });
+      sendMessage({
+        type: 'chat-message-send',
+        id: chatState.chatId,
+        username,
+        content: input,
+      });
       setInput('');
     }
   };

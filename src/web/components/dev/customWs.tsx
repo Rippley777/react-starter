@@ -10,7 +10,8 @@ const CustomWs: React.FC<CustomWsProps> = (props) => {
   // Destructure props here if needed
   // const { messages, sendMessage, status } = useWebSocket(
   const { sendMessage } = useWebSocket(
-    'wss://be-test-mongo-express.azurewebsites.net',
+    process.env.REACT_APP_WEBSOCKET_URL ??
+      'wss://be-test-mongo-express.azurewebsites.net',
   );
   const { control, handleSubmit } = useForm();
 
