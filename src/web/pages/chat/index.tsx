@@ -47,7 +47,7 @@ function Chat() {
         setIsConnected(true);
       }
     }
-  }, [status, messages]);
+  }, [status, messages, dispatch, sendMessage, isConnected, username]);
 
   const handleSend = () => {
     if (input) {
