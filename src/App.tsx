@@ -13,6 +13,10 @@ import Chat from './web/pages/chat';
 import Login from './web/pages/user/login';
 import SignUp from './web/pages/user/signup';
 import Profile from './web/pages/user/profile';
+import ImageUploader from './web/pages/uploader/image';
+
+// move this to pages
+import Images from './web/components/viewer/images';
 
 const queryClient = new QueryClient();
 
@@ -42,6 +46,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/images" element={<Images />} />
+              <Route path="/uploader/image" element={<ImageUploader />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </Router>

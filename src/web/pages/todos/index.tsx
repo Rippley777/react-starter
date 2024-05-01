@@ -3,6 +3,11 @@ import TodoList from './components/todoList';
 import AddTodo from './components/addTodo';
 import Page from '../../components/layout/page';
 
+const todoApiBaseUrl =
+  process.env.REACT_APP_API_URL ??
+  'https://be-test-mongo-express.azurewebsites.net';
+const todoApiUrl = `${todoApiBaseUrl}/api/todos`;
+
 function Todos() {
   const [todos, setTodos] = useState<any>([]);
 
@@ -11,33 +16,25 @@ function Todos() {
   }, []);
 
   const fetchTodos = async () => {
-    const response = await fetch(
-      'https://be-test-mongo-express.azurewebsites.net/api/todos',
-    );
+    const response = await fetch(todoApiUrl);
     const data = await response.json();
     setTodos(data);
   };
 
   const addTodo = async (todo: any) => {
-    const response = await fetch(
-      'https://be-test-mongo-express.azurewebsites.net/api/todos',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(todo),
-      },
-    );
+    const response = await fetch(todoApiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(todo),
+    });
     const newTodo = await response.json();
     setTodos([...todos, newTodo]);
   };
 
   const deleteTodo = async (id: any) => {
-    await fetch(
-      `https://be-test-mongo-express.azurewebsites.net/api/todos/${id}`,
-      {
-        method: 'DELETE',
-      },
-    );
+    await fetch(`${todoApiUrl}/${id}`, {
+      method: 'DELETE',
+    });
     setTodos(todos.filter((todo: any) => todo._id !== id));
   };
 

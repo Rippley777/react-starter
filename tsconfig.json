@@ -12,6 +12,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
