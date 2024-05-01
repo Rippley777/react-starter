@@ -39,14 +39,18 @@ const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
         name="email"
         control={control}
         rules={{ required: 'First name is required' }}
-        render={({ field }) => <Input {...field} placeholder="Email" />}
+        render={({ field }) => (
+          <Input {...field} placeholder="Email" data-testid="email" />
+        )}
       />
       {errors.email && <span>{errors.email.message}</span>}
       <Controller
         name="password"
         control={control}
         rules={{ required: 'Password is required' }}
-        render={({ field }) => <Input {...field} placeholder="Password" />}
+        render={({ field }) => (
+          <Input {...field} placeholder="Password" data-testid="password" />
+        )}
       />
       {errors.password && <span>{errors.password.message}</span>}
       <Button type="submit">Login</Button>

@@ -15,17 +15,28 @@ module.exports = {
   snapshotDir: './tests/snapshots',
   reporter: [['html', { outputFolder: './playwright-report' }]],
   projects: [
+    { name: 'setup', testMatch: /.*\.setup\.ts/ },
+
     {
       name: 'Chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+      dependencies: ['setup'],
     },
     {
       name: 'Firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+      dependencies: ['setup'],
     },
     {
       name: 'WebKit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+      },
+      dependencies: ['setup'],
     },
   ],
 };
