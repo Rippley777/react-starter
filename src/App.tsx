@@ -13,7 +13,8 @@ import Chat from './web/pages/chat';
 import Login from './web/pages/user/login';
 import SignUp from './web/pages/user/signup';
 import Profile from './web/pages/user/profile';
-import ImageUploader from './web/pages/uploader/image';
+import ImageUploader from './web/components/uploader/image';
+import CreateBlog from './web/pages/blog/create';
 
 // move this to pages
 import Images from './web/components/viewer/images';
@@ -48,6 +49,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/images" element={<Images />} />
               <Route path="/uploader/image" element={<ImageUploader />} />
+              <Route path="/blog/new" element={<CreateBlog />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </Router>

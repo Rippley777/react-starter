@@ -1,29 +1,33 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useImageUpload } from '../../../api/upload';
-import Page from '../../components/layout/page';
+import ImageViewer from '../viewer/image';
 
-const ImageUploader = () => {
-  const { register, handleSubmit, watch } = useForm({
+type ImageUploaderProps = {
+  onSuccess?: () => void;
+};
+
+const ImageUploader = ({ onSuccess }: ImageUploaderProps) => {
+  const { register, handleSubmit /*, watch*/ } = useForm({
     defaultValues: { name: '', file: null },
   });
   const { mutate, isLoading, isError, error, isSuccess, data } =
     useImageUpload();
 
   // Watch the file input to get the latest file
-  const file = watch('file');
+  // const file = watch('file');
 
   const onSubmit = ({ name, file }) => {
-    const fileToSend = file[0]; // Since it's a FileList, get the first file
+    const fileToSend = file[0];
     if (!fileToSend) {
       alert('No file selected');
       return;
     }
-    mutate({ file: fileToSend, name }); // Pass file and name to the mutation
+    mutate({ file: fileToSend, name });
+    onSuccess?.();
   };
 
   return (
-    <Page>
+    <>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col space-y-4 items-center"
@@ -41,9 +45,13 @@ const ImageUploader = () => {
           Upload
         </button>
       </form>
-      {isSuccess && <p>{data}</p>}
+      {isSuccess && (
+        <p>
+          <ImageViewer imageId={JSON.parse(data).id} />
+        </p>
+      )}
       {isError && <p>Error: {error.message}</p>}
-    </Page>
+    </>
   );
 };
 
