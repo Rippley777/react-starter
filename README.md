@@ -6,11 +6,11 @@ Somehow you've landed on, what I think, is a pretty cool boilerplate for a web/m
 
 ## What's it got?
 
-React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
+React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, Playwright, Storybook, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
 
 ## Coming Soon!
 
-React Table, Playwright, Storybook, Dark Mode, Feature Flags, Charting library (D3 or Plotly 🤔)
+React Table, Dark Mode, Feature Flags, Charting library (D3 or Plotly 🤔)
 
 ## Current Pages
 
