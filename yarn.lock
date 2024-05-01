@@ -1272,17 +1272,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@chromatic-com/storybook@^1.3.3":
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/@chromatic-com/storybook/-/storybook-1.3.3.tgz#102d173d7e67cbc7f974648eaa459aa3d3d53f91"
-  integrity sha512-1y9r691T5vVGDZ0HY3YrCXUnvtrT2YrhDuvDZSvYSNUVpM/Imz6i1dnNMKb3eoI1qRsH55mI4zCt+Iq94NLedQ==
-  dependencies:
-    chromatic "^11.3.0"
-    filesize "^10.0.12"
-    jsonfile "^6.1.0"
-    react-confetti "^6.1.0"
-    strip-ansi "^7.1.0"
-
 "@colors/colors@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
@@ -7010,11 +6999,6 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromatic@^11.3.0:
-  version "11.3.0"
-  resolved "https://registry.yarnpkg.com/chromatic/-/chromatic-11.3.0.tgz#d46b7aac1a0eaed29a765645eaf93c484220174c"
-  integrity sha512-q1ZtJDJrjLGnz60ivpC16gmd7KFzcaA4eTb7gcytCqbaKqlHhCFr1xQmcUDsm14CK7JsqdkFU6S+JQdOd2ZNJg==
-
 chrome-launcher@^0.15.2:
   version "0.15.2"
   resolved "https://registry.yarnpkg.com/chrome-launcher/-/chrome-launcher-0.15.2.tgz#4e6404e32200095fdce7f6a1e1004f9bd36fa5da"
@@ -9358,11 +9342,6 @@ filelist@^1.0.4:
   integrity sha512-w1cEuf3S+DrLCQL7ET6kz+gmlJdbq9J7yXCSjK/OZCPA+qEN1WyF4ZAf0YYJa4/shHJra2t/d/r8SV4Ji+x+8Q==
   dependencies:
     minimatch "^5.0.1"
-
-filesize@^10.0.12:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/filesize/-/filesize-10.1.1.tgz#eb98ce885aa73741199748e70e5b7339cc22c5ff"
-  integrity sha512-L0cdwZrKlwZQkMSFnCflJ6J2Y+5egO/p3vgRSDQGxQt++QbUZe5gMbRO6kg6gzwQDPvq2Fk9AmoxUNfZ5gdqaQ==
 
 filesize@^8.0.6:
   version "8.0.7"
@@ -12245,7 +12224,7 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsonfile@^6.0.1, jsonfile@^6.1.0:
+jsonfile@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-6.1.0.tgz#bc55b2634793c679ec6403094eb13698a6ec0aae"
   integrity sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==
@@ -14960,13 +14939,6 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.6.1.tgz#7dc2aed2d7c72fac89694e834d179e32f3da563b"
   integrity sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==
 
-react-confetti@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-confetti/-/react-confetti-6.1.0.tgz#03dc4340d955acd10b174dbf301f374a06e29ce6"
-  integrity sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==
-  dependencies:
-    tween-functions "^1.2.0"
-
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-12.0.1.tgz#ba92edb4a1f379bd46ccd6bcd4e7bc398df33e73"
@@ -16694,7 +16666,7 @@ strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   dependencies:
     ansi-regex "^5.0.1"
 
-strip-ansi@^7.0.1, strip-ansi@^7.1.0:
+strip-ansi@^7.0.1:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-7.1.0.tgz#d5b6568ca689d8561370b0707685d22434faff45"
   integrity sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==
@@ -17315,11 +17287,6 @@ tsutils@^3.21.0:
   integrity sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==
   dependencies:
     tslib "^1.8.1"
-
-tween-functions@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/tween-functions/-/tween-functions-1.2.0.tgz#1ae3a50e7c60bb3def774eac707acbca73bbc3ff"
-  integrity sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
