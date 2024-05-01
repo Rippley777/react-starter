@@ -6,11 +6,13 @@ import { RootState } from '../../../../store/store';
 import Page from '../../../components/layout/page';
 import Button from '../../../components/buttons';
 import { setUserProfileData } from '../../../../store/reducers/users';
-
+import { updateDisplayName } from '../../../../auth/utils/firebase';
+import { useUpdateUsername } from '../../../../api/user';
 const UserProfile = () => {
   const { userData = {} } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
+  const { mutate } = useUpdateUsername();
 
   const {
     control,
@@ -34,6 +36,14 @@ const UserProfile = () => {
   const onSubmit = async (values: { email: string; username: string }) => {
     try {
       dispatch(setUserProfileData({ ...values }));
+      updateDisplayName(values.username);
+      if (userData?.username !== values.username) {
+        mutate({
+          email: values.email,
+          username: values.username,
+        });
+      }
+
       //   window.location.href = '/profile';
     } catch (error: any) {
       //   setError(error.message);

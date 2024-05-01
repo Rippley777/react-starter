@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import { signIn } from '../../../auth/authService';
 import { setUserData } from '../../../store/reducers/users';
+import { useUserLogin } from '../../../api/user';
 import Input from '../../components/form/input';
 import Button from '../../components/buttons';
 
@@ -22,9 +23,16 @@ const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
     },
   });
   const dispatch = useDispatch();
+  const { mutate } = useUserLogin();
+
   const onSubmit = async (values: { email: string; password: string }) => {
     try {
       const userCredential = await signIn(values.email, values.password);
+      mutate({
+        email: userCredential.user.email,
+        username: userCredential.user.displayName || userCredential.user.email,
+      });
+
       dispatch(setUserData({ email: values.email, ...userCredential }));
       if (redirectToProfile) window.location.href = '/profile';
     } catch (error: any) {
