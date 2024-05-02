@@ -8,9 +8,14 @@ import Button from '../../components/buttons';
 
 type LoginFormProps = {
   setError: (error: string) => void;
+  onLoginSuccess?: () => void;
   redirectToProfile?: boolean;
 };
-const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
+const LoginForm = ({
+  setError,
+  onLoginSuccess,
+  redirectToProfile,
+}: LoginFormProps) => {
   // const store = useContext(StoreContext);
   const {
     control,
@@ -34,6 +39,7 @@ const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
       });
 
       dispatch(setUserData({ email: values.email, ...userCredential }));
+      onLoginSuccess?.();
       if (redirectToProfile) window.location.href = '/profile';
     } catch (error: any) {
       setError(error.message);
@@ -57,7 +63,12 @@ const LoginForm = ({ setError, redirectToProfile }: LoginFormProps) => {
         control={control}
         rules={{ required: 'Password is required' }}
         render={({ field }) => (
-          <Input {...field} placeholder="Password" data-testid="password" />
+          <Input
+            {...field}
+            placeholder="Password"
+            type="password"
+            data-testid="password"
+          />
         )}
       />
       {errors.password && <span>{errors.password.message}</span>}

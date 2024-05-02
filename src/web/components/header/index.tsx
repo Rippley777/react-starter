@@ -108,8 +108,11 @@ const Header = () => {
         </div>
       )}
       {showLogin && (
-        <div className="absolute z-20 bg-white top-20 right-0">
-          <LoginForm setError={() => console.log('error handling needed!')} />
+        <div className="absolute shadow-md z-20 bg-white top-20 right-0">
+          <LoginForm
+            onLoginSuccess={() => setShowLogin(false)}
+            setError={() => console.log('error handling needed!')}
+          />
         </div>
       )}
     </header>
