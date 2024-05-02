@@ -18,6 +18,7 @@ import CreateBlog from './web/pages/blog/create';
 
 // move this to pages
 import Images from './web/components/viewer/images';
+import VideoChat from './web/components/viewer/live';
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ function App() {
               <Route path="/images" element={<Images />} />
               <Route path="/uploader/image" element={<ImageUploader />} />
               <Route path="/blog/new" element={<CreateBlog />} />
+              <Route path="/videochat" element={<VideoChat />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </Router>
