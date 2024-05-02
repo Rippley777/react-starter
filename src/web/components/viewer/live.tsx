@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
+const SERVER_URL =
+  process.env.REACT_APP_WEBSOCKET_URL ??
+  'ws://localhost:8080' ??
+  'wss://be-test-mongo-express.azurewebsites.net'; // Your WebSocket server URL
+
 const configuration: RTCConfiguration = {
   iceServers: [{ urls: 'stun:stun.l.google.com:19302' }],
 };
@@ -14,7 +19,7 @@ const VideoChat: React.FC = () => {
 
   // Initialize WebSocket and handle incoming messages
   useEffect(() => {
-    ws.current = new WebSocket('ws://localhost:8080');
+    ws.current = new WebSocket(SERVER_URL);
     ws.current.onmessage = (message) => {
       const data = JSON.parse(message.data);
       switch (data.type) {
