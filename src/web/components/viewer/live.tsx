@@ -35,6 +35,7 @@ const VideoChat: React.FC = () => {
     return () => {
       ws.current?.close();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Media stream handling
