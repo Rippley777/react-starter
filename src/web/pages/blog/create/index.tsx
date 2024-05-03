@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { LuImagePlus } from 'react-icons/lu';
 import { MdClose } from 'react-icons/md';
 
@@ -14,26 +14,42 @@ export const blogPostsApiUrl = `${blogApiBaseUrl}/api/blogposts`;
 
 const CreateBlogPost = () => {
   const {
-    register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+    setValue,
+    getValues,
+  } = useForm({
+    defaultValues: {
+      author: '',
+      content: '',
+      featured: '',
+      imageIds: '',
+      title: '',
+    },
+  });
 
   const [uploadImage, setUploadImage] = useState(false);
-
+  console.log('getValues', getValues());
   const onSubmit = async (data) => {
     try {
-      // Assuming imageIds are sent as an array of string IDs
+      console.log('add blog', data);
       const payload = {
         title: data.title,
+        author: data.author,
+        date: Date.now(),
         content: data.content,
-        imageIds: data.imageIds.split(','), // Assuming IDs are provided as comma-separated
+        imageIds: data.imageIds ? data.imageIds.split(',') : [],
+        featured: data.featured,
       };
 
       const response = await fetch(blogPostsApiUrl, {
         method: 'POST',
-        ...payload,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...payload }),
       });
       console.log('response', response);
       alert('Blog post created successfully!');
@@ -67,12 +83,55 @@ const CreateBlogPost = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label>Title:</label>
-          <input {...register('title', { required: true })} />
+          <Controller
+            name="title"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => <input {...field} />}
+          />
           {errors.title && <span>This field is required</span>}
         </div>
+
         <div>
-          <Editor {...register('content', { required: true })}></Editor>
-          {errors.content && <span>This field is required</span>}
+          <label>Author:</label>
+          <Controller
+            name="author"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => <input {...field} />}
+          />
+          {errors.author && <span>This field is required</span>}
+        </div>
+
+        <div>
+          <label>Content:</label>
+          <Controller
+            name="content"
+            control={control}
+            render={({ field }) => (
+              <Editor
+                onChange={field.onChange}
+                onBlur={field.onBlur}
+                setValue={setValue}
+                value={field.value}
+              />
+            )}
+          />
+          {errors.content && <span>Error</span>}
+        </div>
+        <div>
+          <Controller
+            name="featured"
+            control={control}
+            render={({ field }) => (
+              <>
+                <input type="checkbox" {...field} />
+                <label>Featured Post</label>
+                {/* <input type="checkbox" value="movies" {...field} />
+              <label>Movies</label> */}
+              </>
+            )}
+          />
         </div>
         <button type="submit">Submit</button>
       </form>

@@ -8,7 +8,7 @@ export default function Chat() {
   const state = useSelector((state: any) => state.user.userData);
 
   const { messages, sendMessage, status } = useWebSocket(
-    'wss://be-test-mongo-express.azurewebsites.net',
+    'ws://localhost:8080' ?? 'wss://be-test-mongo-express.azurewebsites.net',
   );
   const [input, setInput] = React.useState('');
   const username = state.email ?? 'anonymous';

@@ -9,11 +9,13 @@ type EditorProps = {
   onBlur?: any;
   value?: string;
   name?: string;
+  setValue?: (field: 'content', updateContent: string) => void;
   ref?: RefCallBack; // Use the correct type for the ref from RHF
 };
 
 const Editor: React.FC<EditorProps> = ({
   onChange,
+  setValue,
   //   onBlur,
   //   value,
   //   name,
@@ -22,7 +24,7 @@ const Editor: React.FC<EditorProps> = ({
   const [markdown, setMarkdown] = useState('');
 
   const handleEditorChange = ({ text }) => {
-    // onChange?.(text);
+    setValue && setValue('content', text);
     setMarkdown(text);
   };
 
