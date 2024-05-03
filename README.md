@@ -1,12 +1,12 @@
-# Under Construction! 🚧🚧🚧
+# 🚧 Under Construction! 🚧
 
 🚨 Proceed with Caution 🚨
 
-Somehow you've landed on, what I think, is a pretty cool boilerplate for a web/mobile app built using React/React Native. This is very much in still a WIP, but is built with stability and industry best practices in mind. I hope to use this as a template for future projects, and I expect to have branches with experimental features, in order to keep main stable for the future. If you are an individual, please feel free to use this, but I maintain no responsibility for what may go wrong 🤣
+This is a testing ground that I would like to use as a starting point for new projects going forward. This is a monorepo with both React and React Native sharing business logic. I would like to add some beta tools to share components, as well (namely React Strict DOM with styleX/tailwind). I also plan to handle other React platforms, i.e. ReactVR, ReactNativeVisionOS. This is very much in still a WIP, but is built with stability and industry best practices in mind. I expect to have branches with experimental features and attempt to keep main as stable as possible. If you are an individual, please feel free to use this, but I maintain no responsibility for what may go wrong 🤣
 
 ## What's it got?
 
-React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, Playwright, Storybook, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
+React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, Jest, Playwright, Storybook, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
 
 ## Coming Soon!
 
@@ -58,12 +58,12 @@ This is currently being used by Docker and set up for hosting on Azure.
 
 ### `yarn run mobile`
 
-Runs the app in expo. This provides a QR code for viewing on actual devices, or hotkeys for opening various simulators/environments.
+Runs the app in expo. This provides a QR code for viewing on actual devices, or hotkeys for opening various simulators/environments.\
 Enjoy 😎
 
 ### `yarn run [android|ios|web]`
 
-Opens the app in expo with the selected simulator set to auto-open
+Opens the app in expo with the selected simulator set to auto-open\
 Enjoy, but lazier 🥳
 
 ## Learn More
