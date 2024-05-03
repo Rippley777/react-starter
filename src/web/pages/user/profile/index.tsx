@@ -62,7 +62,7 @@ const UserProfile = () => {
             rules={{ required: 'Email is required' }}
             render={({ field }) => (
               <input
-                className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none"
+                className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none dark:text-black"
                 placeholder="Email"
                 {...field}
               />
