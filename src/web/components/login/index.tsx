@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { signIn } from '../../../auth/authService';
 import { setUserData } from '../../../store/reducers/users';
 import { useUserLogin } from '../../../api/user';
-import { FormInput, Input } from '../../components/form/input';
+import { Input } from '../../components/form/input';
 import Button from '../../components/buttons';
 
 type LoginFormProps = {
@@ -16,7 +16,6 @@ const LoginForm = ({
   onLoginSuccess,
   redirectToProfile,
 }: LoginFormProps) => {
-  // const store = useContext(StoreContext);
   const {
     control,
     handleSubmit,
@@ -37,7 +36,6 @@ const LoginForm = ({
         email: userCredential.user.email,
         username: userCredential.user.displayName || userCredential.user.email,
       });
-
       dispatch(setUserData({ email: values.email, ...userCredential }));
       onLoginSuccess?.();
       if (redirectToProfile) window.location.href = '/profile';

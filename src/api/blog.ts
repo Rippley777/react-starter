@@ -5,10 +5,7 @@ import {
   UseQueryResult,
 } from 'react-query';
 
-const blogApiBaseUrl =
-  process.env.REACT_APP_API_URL ??
-  'https://be-test-mongo-express.azurewebsites.net';
-export const blogPostsApiUrl = `${blogApiBaseUrl}/api/blogPosts`;
+export const blogPostsApiUrl = `${process.env.REACT_APP_API_URL}/api/blogPosts`;
 
 type Blog = {
   _id: string;

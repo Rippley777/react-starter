@@ -5,10 +5,7 @@ import {
   UseMutationResult,
 } from 'react-query';
 
-const imageApiBaseUrl =
-  process.env.REACT_APP_API_URL ??
-  'https://be-test-mongo-express.azurewebsites.net';
-export const imageUploadApiUrl = `${imageApiBaseUrl}/api/upload/image`;
+export const imageUploadApiUrl = `${process.env.REACT_APP_API_URL}/api/upload/image`;
 
 type Image = {
   id: string;

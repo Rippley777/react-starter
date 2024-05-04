@@ -10,6 +10,7 @@ const BlogPostsViewer = ({ showImage }: BlogPostsViewerProps) => {
   const [ref, size] = useResizeObserver();
   const { data: blogPosts, error, isLoading, isError } = useGetBlogs();
   const [miniView, setMiniView] = useState(false);
+  console.log({ miniView });
 
   useEffect(() => {
     if (size.width && size.width < 800) {
@@ -26,11 +27,10 @@ const BlogPostsViewer = ({ showImage }: BlogPostsViewerProps) => {
   if (isError) {
     return <p>Error: {error.message}</p>;
   }
+
   const handleBlogClick = (id: string) => {
-    console.log('Blog clicked', id);
     window.location.href = `/blog/${id}`;
   };
-  console.log({ blogPosts, size });
 
   return (
     <div ref={ref}>

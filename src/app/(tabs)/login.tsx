@@ -16,12 +16,9 @@ export default function Login() {
     event.preventDefault();
     try {
       const userCredential = await signIn(email, password);
+      dispatch(setUserData({ email: userCredential.user.email }));
 
-      dispatch(setUserData({ email: email }));
-
-      console.log(userCredential.user);
       router.replace('/');
-      // Redirect or perform additional actions
     } catch (error: any) {
       setError(error.message);
       console.error(error.message);

@@ -15,10 +15,7 @@ import ImageUploader from '../../../components/uploader/image';
 
 import Editor from './editor';
 
-const blogApiBaseUrl =
-  process.env.REACT_APP_API_URL ??
-  'https://be-test-mongo-express.azurewebsites.net';
-export const blogPostsApiUrl = `${blogApiBaseUrl}/api/blogposts`;
+export const blogPostsApiUrl = `${process.env.REACT_APP_API_URL}/api/blogposts`;
 
 const CreateBlogPost = () => {
   const topElementRef = useRef<HTMLDivElement>(null);

@@ -1,9 +1,8 @@
 import { useMutation, UseMutationResult } from 'react-query';
+import { useDispatch } from 'react-redux';
 import { setUserId } from '../store/reducers/users';
-const apiBaseUrl =
-  process.env.REACT_APP_API_URL ??
-  'https://be-test-mongo-express.azurewebsites.net';
-export const userApiUrl = `${apiBaseUrl}/api/user`;
+
+export const userApiUrl = `${process.env.REACT_APP_API_URL}/api/user`;
 
 type UserParams = {
   email: string | null;
@@ -19,12 +18,15 @@ export const useUserLogin = (): UseMutationResult<
   UploadError,
   UserParams
 > => {
+  const dispatch = useDispatch();
+
   return useMutation(async ({ email, username }: UserParams) => {
     if (!email) {
       throw new Error('No email provided');
     }
 
-    fetch(userApiUrl, {
+    await fetch(userApiUrl, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -40,7 +42,9 @@ export const useUserLogin = (): UseMutationResult<
         return response.json();
       })
       .then((data) => {
-        console.log('Success:', data);
+        if (data?.user?._id) {
+          dispatch(setUserId(data.user._id));
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -72,10 +76,6 @@ export const useUpdateUsername = (): UseMutationResult<
           // throw new Error('Network response was not ok');
         }
         return response.json();
-      })
-      .then((data) => {
-        setUserId(data.id);
-        console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error:', error);

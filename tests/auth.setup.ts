@@ -7,7 +7,7 @@ setup('authenticate as admin', async ({ page }) => {
   await page.goto('/login');
   await page.getByTestId('email').fill('test@test.com');
   await page.getByTestId('password').fill('testtest');
-  await page.getByRole('button').click();
+  await page.getByRole('button').getByText('Login').click();
   // Wait until the page receives the cookies.
   //
   // Sometimes login flow sets cookies in the process of several redirects.

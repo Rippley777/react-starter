@@ -38,15 +38,12 @@ const chatSlice = createSlice({
   initialState,
   reducers: {
     setUserChatData: (state, action) => {
-      console.log('action.payload', action.payload);
       // const chatData = {
       //   chatId: action.payload.userId,
       // };
       state.chatId = action.payload.userId;
     },
     updateChat: (state, action) => {
-      console.log('action.payload', action.payload);
-
       if (action.payload.type === 'chat-message') {
         const {
           type,

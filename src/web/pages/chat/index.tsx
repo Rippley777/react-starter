@@ -15,8 +15,7 @@ import UserList from './components/userList';
 function ChatPage() {
   const userState = useSelector((state: RootState) => state.user.userData);
   const { sendMessage, status } = useWebSocket(
-    process.env.REACT_APP_WEBSOCKET_URL ??
-      'wss://be-test-mongo-express.azurewebsites.net',
+    process.env.REACT_APP_WEBSOCKET_URL || 'ws://localhost:8080',
   );
 
   useEffect(() => {
@@ -32,11 +31,9 @@ function ChatPage() {
     <Page>
       <div className="flex flex-col h-full">
         <Header status={status} />
-        <div className="w-full h-full flex flex-col">
-          <div className="flex gap-x-3 h-full">
-            <Body />
-            <UserList />
-          </div>
+        <div className="w-full h-full grid grid-cols-4 gap-4">
+          <Body />
+          <UserList />
           <Input sendMessage={sendMessage} />
         </div>
         <Footer />

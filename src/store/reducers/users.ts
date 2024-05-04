@@ -34,8 +34,6 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
     },
     setUserId: (state, action: PayloadAction<string>) => {
-      console.log('Setting user id', action.payload);
-
       state.userData = {
         ...state.userData,
         id: action.payload,

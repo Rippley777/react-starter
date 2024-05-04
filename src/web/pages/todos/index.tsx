@@ -3,10 +3,7 @@ import TodoList from './components/todoList';
 import AddTodo from './components/addTodo';
 import Page from '../../components/layout/page';
 
-const todoApiBaseUrl =
-  process.env.REACT_APP_API_URL ??
-  'https://be-test-mongo-express.azurewebsites.net';
-const todoApiUrl = `${todoApiBaseUrl}/api/todos`;
+const todoApiUrl = `${process.env.REACT_APP_API_URL}/api/todos`;
 
 function Todos() {
   const [todos, setTodos] = useState<any>([]);

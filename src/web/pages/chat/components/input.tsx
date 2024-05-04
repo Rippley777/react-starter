@@ -24,19 +24,19 @@ function ChatInput({ sendMessage }: any) {
   };
 
   return (
-    <div className="flex justify-between items-center gap-x-3">
+    <>
       <input
-        className="p-3 rounded-sm flex-4 w-full h-12 dark:bg-gray-600"
+        className="p-3 rounded-sm col-span-3 h-14 dark:bg-gray-600"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyDown}
         type="text"
         placeholder="Enter message"
       />
-      <Button className="flex-1" onClick={handleSend}>
+      <Button className="col-span-1 h-14" onClick={handleSend}>
         Send
       </Button>
-    </div>
+    </>
   );
 }
 
