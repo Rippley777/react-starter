@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { signIn } from '../../../auth/authService';
 import { setUserData } from '../../../store/reducers/users';
 import { useUserLogin } from '../../../api/user';
-import Input from '../../components/form/input';
+import { FormInput, Input } from '../../components/form/input';
 import Button from '../../components/buttons';
 
 type LoginFormProps = {
@@ -53,9 +53,7 @@ const LoginForm = ({
         name="email"
         control={control}
         rules={{ required: 'First name is required' }}
-        render={({ field }) => (
-          <Input {...field} placeholder="Email" data-testid="email" />
-        )}
+        render={({ field }) => <Input {...field} data-testid="email" />}
       />
       {errors.email && <span>{errors.email.message}</span>}
       <Controller
@@ -63,12 +61,7 @@ const LoginForm = ({
         control={control}
         rules={{ required: 'Password is required' }}
         render={({ field }) => (
-          <Input
-            {...field}
-            placeholder="Password"
-            type="password"
-            data-testid="password"
-          />
+          <Input {...field} type="password" data-testid="password" />
         )}
       />
       {errors.password && <span>{errors.password.message}</span>}

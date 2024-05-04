@@ -31,6 +31,7 @@ export const useGetImage = (imageId: string): UseQueryResult<string, Error> => {
     { enabled: !!imageId },
   );
 };
+
 export const useGetImages = (): UseQueryResult<Image[], Error> => {
   return useQuery(['fetchImages'], async (): Promise<Image[]> => {
     const response = await fetch(`${imageUploadApiUrl}s`);
@@ -70,7 +71,6 @@ export const useImageUpload = (): UseMutationResult<
         method: 'POST',
         body: formData,
       });
-      console.log('response', response);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');

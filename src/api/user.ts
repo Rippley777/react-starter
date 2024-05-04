@@ -1,5 +1,5 @@
 import { useMutation, UseMutationResult } from 'react-query';
-
+import { setUserId } from '../store/reducers/users';
 const apiBaseUrl =
   process.env.REACT_APP_API_URL ??
   'https://be-test-mongo-express.azurewebsites.net';
@@ -25,7 +25,6 @@ export const useUserLogin = (): UseMutationResult<
     }
 
     fetch(userApiUrl, {
-      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -75,6 +74,7 @@ export const useUpdateUsername = (): UseMutationResult<
         return response.json();
       })
       .then((data) => {
+        setUserId(data.id);
         console.log('Success:', data);
       })
       .catch((error) => {

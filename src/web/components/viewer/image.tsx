@@ -1,6 +1,12 @@
 import { useGetImage } from '../../../api/upload';
 
-const ImageViewer = ({ imageId }: { imageId: string }) => {
+const ImageViewer = ({
+  imageId,
+  preview,
+}: {
+  imageId: string;
+  preview?: boolean;
+}) => {
   const { data: imageUrl, error, isLoading, isError } = useGetImage(imageId);
 
   if (isLoading) {
@@ -12,12 +18,12 @@ const ImageViewer = ({ imageId }: { imageId: string }) => {
   }
 
   return (
-    <div>
+    <div className={preview ? 'p-2 bg-white shadow-md' : ''}>
       {imageUrl && (
         <img
           src={imageUrl}
           alt="Fetched from server"
-          style={{ maxWidth: '100%' }}
+          className={`${preview ? 'h-auto w-60' : 'h-full max-w-full'}`}
         />
       )}
     </div>

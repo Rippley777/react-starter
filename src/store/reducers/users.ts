@@ -4,6 +4,7 @@ import { omit } from '../../utils/obj-helpers';
 type UserData = {
   email?: string;
   username?: string;
+  id?: string;
 };
 
 type UserState = {
@@ -26,10 +27,19 @@ const userSlice = createSlice({
     },
     setUserData: (state, action) => {
       const userData: UserData = {
+        ...state.userData,
         email: action.payload.email,
       };
       state.userData = userData;
       state.isAuthenticated = true;
+    },
+    setUserId: (state, action: PayloadAction<string>) => {
+      console.log('Setting user id', action.payload);
+
+      state.userData = {
+        ...state.userData,
+        id: action.payload,
+      };
     },
     setUserProfileData: (state, action: PayloadAction<UserData>) => {
       const payload = omit(action.payload, 'email');
@@ -42,5 +52,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUserData, setUserProfileData, clearUser } = userSlice.actions;
+export const { setUserData, setUserId, setUserProfileData, clearUser } =
+  userSlice.actions;
 export default userSlice.reducer;

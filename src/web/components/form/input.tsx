@@ -4,13 +4,22 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   // Define the props for your component here
 }
 
-const MyComponent: React.FC<Props> = (props) => {
+export const Input = React.forwardRef((props: Props, ref: any) => {
   return (
     <input
-      className="p-3 m-2 border-1 border-gray-700 border-solid rounded-md outline-none"
+      className="dark:bg-gray-600 p-2 border-1 border-gray-700 border-solid rounded-sm outline-none"
       {...props}
     />
   );
-};
+});
 
-export default MyComponent;
+export const FormInput = ({ children, label }) => (
+  <div>
+    <div className="text-sm text-gray-400">
+      <label>{label}</label>
+    </div>
+    {children}
+  </div>
+);
+
+export default FormInput;

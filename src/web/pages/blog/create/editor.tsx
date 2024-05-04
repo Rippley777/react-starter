@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import 'react-markdown-editor-lite/lib/index.css';
 
 type EditorProps = {
+  show: boolean;
   onChange?: (content: any) => void;
   onBlur?: any;
   value?: string;
@@ -15,6 +16,7 @@ type EditorProps = {
 
 const Editor: React.FC<EditorProps> = ({
   onChange,
+  show,
   setValue,
   //   onBlur,
   //   value,
@@ -29,16 +31,16 @@ const Editor: React.FC<EditorProps> = ({
   };
 
   return (
-    <div>
+    <div className={show ? 'block' : 'hidden'}>
       <MarkdownEditor
         renderHTML={(text) => <ReactMarkdown>{text}</ReactMarkdown>}
         value={markdown}
         onChange={handleEditorChange}
         style={{ height: '500px' }}
       />
-      <div className="preview">
+      {/* <div className="preview">
         <ReactMarkdown>{markdown}</ReactMarkdown>
-      </div>
+      </div> */}
     </div>
   );
 };

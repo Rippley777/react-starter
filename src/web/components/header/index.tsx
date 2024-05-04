@@ -6,6 +6,7 @@ import { getAuth } from 'firebase/auth';
 import { clearUser } from '../../../store/reducers/users';
 import logo from './images/logo.png';
 import LoginForm from '../login';
+import { ThemeSwitcher } from '../buttons/themeSwitcher';
 
 const Menu = () => {
   return (
@@ -41,9 +42,9 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full bg-white flex justify-between h-24 items-center p-5">
+    <header className="bg-white dark:bg-gray-800 w-full flex justify-between h-24 items-center p-5">
       <div
-        className="text-xl font-medium text-black flex items-center gap-x-3 cursor-pointer"
+        className="text-xl font-medium flex items-center gap-x-3 cursor-pointer"
         onClick={() => (window.location.href = '/')}
       >
         <img
@@ -58,7 +59,6 @@ const Header = () => {
       <nav className="hidden sm:block">
         <ul className="flex gap-x-3">
           <Menu />
-
           {state?.email ? (
             <>
               <li>
@@ -80,6 +80,9 @@ const Header = () => {
               </div>
             </li>
           )}
+          <li>
+            <ThemeSwitcher />
+          </li>
         </ul>
       </nav>
       <div
@@ -93,7 +96,7 @@ const Header = () => {
           className="absolute w-full h-full bg-black bg-opacity-50 top-0 left-0"
           onClick={() => setShowMenu(false)}
         >
-          <div className="absolute w-3/5 z-20 bg-white top-0 bottom-0 right-0 p-10">
+          <div className="absolute w-3/5 z-20 bg-white dark:bg-gray-800 top-0 bottom-0 right-0 p-10">
             <ul className="flex flex-col gap-y-7">
               <Menu />
               <li>

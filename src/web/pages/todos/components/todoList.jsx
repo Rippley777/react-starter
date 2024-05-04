@@ -3,7 +3,7 @@ import TodoItem from './todoItem';
 
 function TodoList({ todos, onDeleteTodo }) {
   return (
-    <div className="mt-5 p-5 bg-white">
+    <div className="mt-5 p-5 bg-white dark:bg-gray-800">
       {todos.map((todo) => (
         <TodoItem key={todo._id} todo={todo} onDelete={onDeleteTodo} />
       ))}

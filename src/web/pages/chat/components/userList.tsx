@@ -12,7 +12,7 @@ const UserList: React.FC = () => {
   );
 
   return (
-    <div>
+    <div className="flex-1">
       {userList.map((user) => (
         <div key={user.id}>{user.username}</div>
       ))}

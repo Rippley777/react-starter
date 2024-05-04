@@ -15,7 +15,7 @@ import SignUp from './web/pages/user/signup';
 import Profile from './web/pages/user/profile';
 import ImageUploader from './web/components/uploader/image';
 import CreateBlog from './web/pages/blog/create';
-
+import BlogViewSingle from './web/pages/blog/view/single';
 // move this to pages
 import Images from './web/components/viewer/images';
 import VideoChat from './web/components/viewer/live';
@@ -51,6 +51,7 @@ function App() {
               <Route path="/images" element={<Images />} />
               <Route path="/uploader/image" element={<ImageUploader />} />
               <Route path="/blog/new" element={<CreateBlog />} />
+              <Route path="/blog/:blogId" element={<BlogViewSingle />} />
               <Route path="/videochat" element={<VideoChat />} />
               <Route path="/" element={<Home />} />
             </Routes>
