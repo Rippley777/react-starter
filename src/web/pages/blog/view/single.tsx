@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-import { useGetBlog } from '../../../../api/blog';
+import { useGetBlog } from '../../../../shared/api/blog';
 import Page from '../../../components/layout/page';
 
 const BlogSingle = () => {

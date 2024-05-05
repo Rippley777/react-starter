@@ -1,4 +1,4 @@
-import { imageUploadApiUrl, useGetImages } from '../../../api/upload';
+import { imageUploadApiUrl, useGetImages } from '../../../shared/api/upload';
 import Page from '../../components/layout/page';
 
 const ImagesViewer = () => {

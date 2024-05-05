@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { getAuth } from 'firebase/auth';
 
-import { clearUser } from '../../../store/reducers/users';
+import { clearUser } from '../../../shared/store/reducers/users';
 import logo from './images/logo.png';
 import LoginForm from '../login';
 import { ThemeSwitcher } from '../buttons/themeSwitcher';

@@ -5,8 +5,8 @@ import { LuImagePlus } from 'react-icons/lu';
 import { MdClose, MdCloseFullscreen } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 
-import { useBlogUpload } from '../../../../api/blog';
-import { RootState } from '../../../../store/store';
+import { useBlogUpload } from '../../../../shared/api/blog';
+import { RootState } from '../../../../shared/store/store';
 import MessageBanner from '../../../components/banner/message';
 import Button from '../../../components/buttons';
 import { FormInput, Input } from '../../../components/form/input';

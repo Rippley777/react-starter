@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../../store/store';
+import { RootState } from '../../../../shared/store/store';
 
 function ChatBody() {
   const messages = useSelector((state: RootState) => state.chat.messages ?? []);

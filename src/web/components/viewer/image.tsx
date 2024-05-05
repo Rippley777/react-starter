@@ -1,4 +1,4 @@
-import { useGetImage } from '../../../api/upload';
+import { useGetImage } from '../../../shared/api/upload';
 
 const ImageViewer = ({
   imageId,

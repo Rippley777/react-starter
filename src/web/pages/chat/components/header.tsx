@@ -1,7 +1,7 @@
 import { FaPlug } from 'react-icons/fa6';
 import { useSelector } from 'react-redux';
 import { twMerge } from 'tailwind-merge';
-import { RootState } from '../../../../store/store';
+import { RootState } from '../../../../shared/store/store';
 
 function ChatHeader({ status }: { status: string }) {
   const username = useSelector(

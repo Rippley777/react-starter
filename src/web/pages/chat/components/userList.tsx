@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { FaDoorClosed } from 'react-icons/fa6';
 
-import { RootState } from '../../../../store/store';
+import { RootState } from '../../../../shared/store/store';
 
 const UserList: React.FC = () => {
   const userList = useSelector(

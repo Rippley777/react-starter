@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 
-import { RootState } from '../../../../store/store';
+import { RootState } from '../../../../shared/store/store';
 import Page from '../../../components/layout/page';
 import Button from '../../../components/buttons';
-import { setUserProfileData } from '../../../../store/reducers/users';
-import { updateDisplayName } from '../../../../auth/utils/firebase';
-import { useUpdateUsername } from '../../../../api/user';
+import { setUserProfileData } from '../../../../shared/store/reducers/users';
+import { updateDisplayName } from '../../../../shared/auth/utils/firebase';
+import { useUpdateUsername } from '../../../../shared/api/user';
 const UserProfile = () => {
   const { userData = {} } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();

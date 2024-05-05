@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Button, StyleSheet, TextInput } from 'react-native';
 import { Text, View } from '@/mobile/components/Themed';
-import useWebSocket from '@/hooks/useWebSocket';
+import useWebSocket from '@/shared/hooks/useWebSocket';
 
 export default function Chat() {
   const state = useSelector((state: any) => state.user.userData);

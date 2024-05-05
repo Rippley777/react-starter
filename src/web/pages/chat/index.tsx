@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../store/store';
-import useWebSocket from '../../../hooks/useWebSocket';
+import { RootState } from '../../../shared/store/store';
+import useWebSocket from '../../../shared/hooks/useWebSocket';
 import Page from '../../components/layout/page';
 import Header from './components/header';
 import Body from './components/body';

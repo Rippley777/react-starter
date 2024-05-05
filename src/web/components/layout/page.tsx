@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
+
+import { RootState } from '../../../shared/store/store';
 import Header from '../header';
 import Footer from '../footer';
 

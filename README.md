@@ -6,11 +6,11 @@ This is a testing ground that I would like to use as a starting point for new pr
 
 ## What's it got?
 
-React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, Jest, Playwright, Storybook, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
+React, React Native, TypeScript, Tailwind CSS, Websockets, Simple user AUTH, Redux, React Router, React Query, React Hook Form, Jest, Playwright, Storybook, Dark Mode, React Icons, ESLint, Prettier, Docker, NGINX, based of CRA
 
 ## Coming Soon!
 
-React Table, Dark Mode, Feature Flags, Charting library (D3 or Plotly 🤔)
+React Table, Feature Flags, Crude A/B testing example, Charting library (D3 or Plotly 🤔)
 
 ## Current Pages
 

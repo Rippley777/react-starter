@@ -4,7 +4,7 @@ import { StoryFn, Meta } from '@storybook/react';
 import '../../../index.css';
 import Chat from '.'; // Ensure the import points to where the Chat component is actually located
 import { Provider } from 'react-redux';
-import store from '../../../store/store'; // Adjust path as necessary
+import store from '../../../shared/store/store'; // Adjust path as necessary
 // import 'path/to/your/main/css/file.css'; // Uncomment if CSS is used and make sure your build system supports CSS imports in TypeScript files
 // import { createMockStore } from './path/to/your/mockStore'; // Adjust the path as necessary
 

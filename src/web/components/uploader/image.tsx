@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiImageAddFill } from 'react-icons/ri';
 import { TbCameraCheck } from 'react-icons/tb';
-import { useImageUpload } from '../../../api/upload';
+import { useImageUpload } from '../../../shared/api/upload';
 import ImageViewer from '../viewer/image';
 
 type ImageUploaderProps = {

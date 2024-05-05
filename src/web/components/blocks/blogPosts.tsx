@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useGetBlogs } from '../../../api/blog';
-import useResizeObserver from '../../../hooks/useResizeObserver';
+import { useGetBlogs } from '../../../shared/api/blog';
+import useResizeObserver from '../../../shared/hooks/useResizeObserver';
 
 type BlogPostsViewerProps = {
   showImage: boolean;
@@ -21,7 +21,7 @@ const BlogPostsViewer = ({ showImage }: BlogPostsViewerProps) => {
   }, [size]);
 
   if (isLoading) {
-    return <p>Loading blogs...</p>;
+    // return <p>Loading blogs...</p>;
   }
 
   if (isError) {
@@ -35,11 +35,16 @@ const BlogPostsViewer = ({ showImage }: BlogPostsViewerProps) => {
   return (
     <div ref={ref}>
       {blogPosts &&
-        blogPosts.map(({ author, date, _id, title }) => {
+        blogPosts.map(({ author, date, _id, title }, index) => {
           return (
             <div
+              key={_id}
               onClick={() => handleBlogClick(_id)}
-              className="border-b border-gray-500 border-solid py-4"
+              className="border-b border-gray-500 border-solid py-4 opacity-0 animate-fadeIn"
+              style={{
+                animationDelay: `${(index + 1) * 1000}ms`,
+                animationFillMode: 'both',
+              }}
             >
               <div className="text-lg">{title}</div>
               <div className="text-sm">-{author}</div>

@@ -3,8 +3,8 @@ import { Button, StyleSheet, SafeAreaView, TextInput } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { router, Link } from 'expo-router';
 import { Text, View } from '@/mobile/components/Themed';
-import { signIn } from '@/auth/authService';
-import { setUserData } from '@/store/reducers/users';
+import { signIn } from '@/shared/auth/authService';
+import { setUserData } from '@/shared/store/reducers/users';
 
 export default function Login() {
   const dispatch = useDispatch();

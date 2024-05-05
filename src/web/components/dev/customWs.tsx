@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import useWebSocket from '../../../hooks/useWebSocket';
+import useWebSocket from '../../../shared/hooks/useWebSocket';
 import Button from '../buttons';
 interface CustomWsProps {
   // Define your props here

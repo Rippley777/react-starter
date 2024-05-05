@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
-import { signIn } from '../../../auth/authService';
-import { setUserData } from '../../../store/reducers/users';
-import { useUserLogin } from '../../../api/user';
+import { signIn } from '../../../shared/auth/authService';
+import { setUserData } from '../../../shared/store/reducers/users';
+import { useUserLogin } from '../../../shared/api/user';
 import { Input } from '../../components/form/input';
 import Button from '../../components/buttons';
 
