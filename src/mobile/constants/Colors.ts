@@ -1,19 +1,23 @@
-const tintColorLight = '#2f95dc';
-const tintColorDark = '#fff';
+import colors from '../../shared/theme/defaults.json';
 
-export default {
+const tintColorLight = colors.compliment;
+const tintColorDark = '#fff';
+console.log({ colors });
+const themeColors = {
+  ...colors,
   light: {
     text: '#000',
-    background: '#fff',
+    background: colors.backgroundDark,
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
   },
   dark: {
     text: '#fff',
-    background: '#000',
+    background: colors.backgroundDark,
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
 };
+export default themeColors;

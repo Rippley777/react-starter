@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from 'react-native';
+import Colors from '../mobile/constants/Colors';
+import { Text, View } from '@/mobile/components/Themed';
 
 export default function Page() {
   return (
@@ -14,21 +16,22 @@ export default function Page() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    backgroundColor: Colors.dark.background,
+    alignItems: 'center',
     padding: 24,
   },
   main: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     maxWidth: 960,
-    marginHorizontal: "auto",
+    marginHorizontal: 'auto',
   },
   title: {
     fontSize: 64,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   subtitle: {
     fontSize: 36,
-    color: "#38434D",
+    color: '#38434D',
   },
 });

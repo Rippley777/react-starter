@@ -47,7 +47,7 @@ const BlogPostsViewer = ({ showImage }: BlogPostsViewerProps) => {
               }}
             >
               <div className="text-lg">{title}</div>
-              <div className="text-sm">-{author}</div>
+              <div className="text-sm">{author}</div>
             </div>
           );
         })}
