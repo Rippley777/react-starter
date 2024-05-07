@@ -1,11 +1,37 @@
 const {
   override,
+  addBabelPlugin,
   addDecoratorsLegacy,
+  addWebpackModuleRule,
   addWebpackPlugin,
 } = require('customize-cra');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const path = require('path');
 
 module.exports = override(
+  addBabelPlugin('@stylexjs/babel-plugin'),
+  addWebpackModuleRule({
+    test: /\.tsx$/,
+    include: path.resolve(__dirname, 'src/shared/components'),
+    use: ['babel-loader'],
+  }),
+  addWebpackModuleRule({
+    test: /\.(cjs)$/,
+    exclude: /@babel(?:\/|\\{1,2})runtime/,
+    loader: require.resolve('babel-loader'),
+    options: {
+      babelrc: false,
+      configFile: false,
+      compact: false,
+      presets: [
+        [
+          require.resolve('babel-preset-react-app/dependencies'),
+          { helpers: true },
+        ],
+      ],
+      cacheDirectory: true,
+    },
+  }),
   addDecoratorsLegacy(),
   process.env.ANALYZE &&
     addWebpackPlugin(
